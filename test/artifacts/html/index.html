@@ -1,0 +1,24 @@
+<!--
+Test all the ways we can reference a local file:
+
+- in the same folder (file.ref, ./file.ref)
+- in a subfolder (sub/file.ref, ./sub/file.ref)
+- in a sibling folder (../sibling/file.ref)
+-->
+<!doctype html>
+<html>
+<head>
+  <link href="https://google.com/style.css?v=googlehttps">
+  <link href="http://google.com/style.css?v=googlehttp">
+  <link href="css/style.css?v=123">
+  <link href="./css/style.css?v=456">
+  <script src="js/script.js"></script>
+  <script src="../vendor/vendor.js"></script>
+</head>
+<body>
+  <img src="./img/img1.jpg">
+  <img src="img/sub/img2.jpg">
+  <img src="local.jpg">
+  <img src="./local.jpg">
+</body>
+</html>

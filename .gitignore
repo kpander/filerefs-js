@@ -89,7 +89,6 @@ out
 
 # Nuxt.js build / generate output
 .nuxt
-dist
 
 # Gatsby files
 .cache/
@@ -128,3 +127,15 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+# local token
+.npmrc
+
+# temp/swap files
+*.swp
+*.swo
+.DS_Store
+thumbs.db
+Thumbs.db
+
