@@ -1,0 +1,37 @@
+{
+  "name": "@kpander/filerefs-js",
+  "version": "0.0.1",
+  "description": "Utility nodejs script to extract all local file references from HTML content and determine absolute paths",
+  "homepage": "https://github.com/kpander/filerefs-js",
+  "author": {
+    "name": "Kendall Anderson",
+    "email": "<kpander@invisiblethreads.com>"
+  },
+  "main": "index.js",
+  "files": [
+    "dist/Filerefs.js",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpander/filerefs-js.git"
+  },
+  "keywords": [
+  ],
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "bugs": {
+    "url": "https://github.com/kpander/filerefs-js/issues"
+  },
+  "devDependencies": {
+    "@kpander/packager-js": "^1.0.1",
+    "jest": "^29.6.4"
+  }
+}
