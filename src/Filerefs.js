@@ -25,7 +25,7 @@ module.exports = class Filerefs {
   static getFilerefs(html, options = {}) {
     if (typeof html !== "string") return false;
 
-    options.basePath = options.basePath || "";
+    options.basePath = options.basePath || false;
     options.tags = options.tags || Filerefs.TAGS;
 
     let refs = {};
@@ -67,16 +67,24 @@ module.exports = class Filerefs {
    *     If the file doesn't exist, this will be boolean false
    */
   static _getRef(basePath, pre, relativeRef, post) {
-    const absolute = path.join(basePath, relativeRef);
-    const url = new URL("http://test.com" + absolute);
+    if (!basePath) basePath = "";
+    const url = new URL("http://test.com" + path.join(basePath, relativeRef));
+    
+    let absolute;
+    if (basePath === "") {
+      absolute = false;
+    } else {
+      absolute = fs.existsSync(url.pathname) ? url.pathname : false;
+    }
 
     return {
       pre: pre,
       relative: relativeRef,
       post: post,
-      relativeBase: relativeRef.replace(url.search, ""),
+      relativeBase: relativeRef.replace(url.search, "").replace(url.hash, ""),
       relativeParams: url.search,
-      absolute: fs.existsSync(url.pathname) ? url.pathname : false,
+      relativeHash: url.hash,
+      absolute: absolute,
     };
   }
 
