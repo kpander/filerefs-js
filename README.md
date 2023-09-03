@@ -20,6 +20,7 @@ const html = `
     <script src="https://google.com/something.js">
     <link href="../css/global.css?version=2">
     <link href="/absolute/file.css">
+    <link rel="icon" href="data:;">
   </head>
   <body>
     <img src="./image.jpg" width="100%">
@@ -75,6 +76,8 @@ console.log(refs);
 ```
 
 Note that `<script src="https://google.com/something.js">` wasn't returned in the results, because it's not a local file. Any reference beginning with `http` will be ignored.
+
+Note that `<link rel="icon" href="data:;">` wasn't returned in the results, because it's a data url.
 
 Note that `<link href="/absolute/file.css">` is returned. It has an absolute path reference (it begins with `/`) and is assumed to be in the same folder as the given `basePath` key.
 

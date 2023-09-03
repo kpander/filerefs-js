@@ -1,6 +1,6 @@
 {
   "name": "@kpander/filerefs-js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Utility nodejs script to extract all local file references from HTML content and determine absolute paths",
   "homepage": "https://github.com/kpander/filerefs-js",
   "author": {
