@@ -32,7 +32,7 @@ module.exports = class Filerefs {
 
     Object.keys(options.tags).forEach(tag => {
       const attr = options.tags[tag];
-      const regex = new RegExp(`(<${tag}[^>]+${attr}=")(?!http)(.*?)(")`, "ig");
+      const regex = new RegExp(`(<${tag}[^>]+${attr}=")(?!http)(.*?)("[^>]{0,}>)`, "ig");
       const matches = html.matchAll(regex);
 
       for (const match of matches) {

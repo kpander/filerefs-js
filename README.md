@@ -21,7 +21,7 @@ const html = `
     <link href="../css/global.css?version=2">
   </head>
   <body>
-    <img src="./image.jpg">
+    <img src="./image.jpg" width="100%">
 </html>
 `;
 // Assume the files referenced in the HTML are relative to
@@ -34,26 +34,26 @@ console.log(refs);
 
 ```js
 {
-  '<script src="js/vendor.js"': {
+  '<script src="js/vendor.js">': {
     pre: '<script src="',
     relative: 'js/vendor.js',
-    post: '"',
+    post: '">',
     relativeBase: 'js/vendor.js',
     relativeParams: '',
     absolute: '/Users/name/path/to/wwww/base/js/vendor.js'
   },
-  '<link href="../css/global.css?version=2"': {
+  '<link href="../css/global.css?version=2">': {
     pre: '<link href="',
     relative: '../css/global.css?version=2',
-    post: '"',
+    post: '">',
     relativeBase: '../css/global.css',
     relativeParams: '?version=2',
     absolute: '/Users/name/path/to/wwww/css/global.css'
   },
-  '<img src="./image.jpg"': {
+  '<img src="./image.jpg" width="100%">': {
     pre: '<img src="',
     relative: './image.jpg',
-    post: '"',
+    post: '" width="100%">',
     relativeBase: './image.jpg',
     relativeParams: '',
     absolute: '/Users/name/path/to/wwww/base/image.jpg'
@@ -90,7 +90,7 @@ In both cases, I need to find all references, get information from the actual fi
 
 It's a simple search and replace.
 
-The "search" value is the primary object key (e.g., `'<script src="js/vendor.js"'`).
+The "search" value is the primary object key (e.g., the element `'<script src="js/vendor.js">'`).
 
 The "replace" value is a concatenation of:
 
@@ -131,6 +131,8 @@ $ npm publish
 # TODO
 
   - Add the Jest test cases (see `test/test.js`)
+
+Yes, we're using regex to parse HTML instead of a parsing engine (like cheerio or jsDOM). Yes, that's brittle and bad. Assume we're using this for our very specific use case and we're not going to encounter things like '>' characters in a data attribute in markup.
 
 
 # Maintainer
