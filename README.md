@@ -19,6 +19,7 @@ const html = `
     <script src="js/vendor.js"></script>
     <script src="https://google.com/something.js">
     <link href="../css/global.css?version=2">
+    <link href="/absolute/file.css">
   </head>
   <body>
     <img src="./image.jpg" width="100%">
@@ -40,6 +41,7 @@ console.log(refs);
     post: '">',
     relativeBase: 'js/vendor.js',
     relativeParams: '',
+    relativeHash: '',
     absolute: '/Users/name/path/to/wwww/base/js/vendor.js'
   },
   '<link href="../css/global.css?version=2">': {
@@ -48,7 +50,17 @@ console.log(refs);
     post: '">',
     relativeBase: '../css/global.css',
     relativeParams: '?version=2',
+    relativeHash: '',
     absolute: '/Users/name/path/to/wwww/css/global.css'
+  },
+  '<link href="/absolute/file.css">': {
+    pre: '<link href="',
+    relative: '/absolute/file.css',
+    post: '">',
+    relativeBase: '/absolute/file.css',
+    relativeParams: '',
+    relativeHash: '',
+    absolute: '/Users/name/path/to/wwww/base/file.css'
   },
   '<img src="./image.jpg" width="100%">': {
     pre: '<img src="',
@@ -56,12 +68,15 @@ console.log(refs);
     post: '" width="100%">',
     relativeBase: './image.jpg',
     relativeParams: '',
+    relativeHash: '',
     absolute: '/Users/name/path/to/wwww/base/image.jpg'
   }
 }
 ```
 
 Note that `<script src="https://google.com/something.js">` wasn't returned in the results, because it's not a local file. Any reference beginning with `http` will be ignored.
+
+Note that `<link href="/absolute/file.css">` is returned. It has an absolute path reference (it begins with `/`) and is assumed to be in the same folder as the given `basePath` key.
 
 Each primary key in the resulting object is the matched text with a local file in the source HTML. This is what you should use as the **search** value if you want to search/replace the value in the HTML.
 
@@ -74,6 +89,7 @@ The keys in each resulting object are as follows:
 | `post`           | the text matched after the file reference |
 | `relativeBase`   | the file reference, without any URL arguments |
 | `relativeParams` | the URL arguments in the file reference |
+| `relativeHash`   | the URL hash (if any) in the file reference |
 | `absolute`       | the absolute path to the file on disk (without URL arguments). `boolean false` if the file wasn't found |
 
 
@@ -94,7 +110,7 @@ The "search" value is the primary object key (e.g., the element `'<script src="j
 
 The "replace" value is a concatenation of:
 
-  - `pre` + `relativeBase` (modified) + `relativeParams` + (modified) + `post`
+  - `pre` + `relativeBase` (modified) + `relativeParams` + (modified) + `relativeHash` + `post`
 
 
 # API
