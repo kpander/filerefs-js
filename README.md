@@ -12,7 +12,7 @@ $ npm install --save-dev @kpander/filerefs-js
 
 # Usage
 
-```
+```js
 const html = `
 <html>
   <head>
@@ -32,7 +32,7 @@ const refs = Filerefs.getFilerefs(html, { basePath: basePath });
 console.log(refs);
 ```
 
-```
+```js
 {
   '<script src="js/vendor.js"': {
     pre: '<script src="',
@@ -52,7 +52,7 @@ console.log(refs);
   },
   '<img src="./image.jpg"': {
     pre: '<img src="',
-    relative:
+    relative: './image.jpg',
     post: '"',
     relativeBase: './image.jpg',
     relativeParams: '',
