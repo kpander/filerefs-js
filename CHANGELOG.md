@@ -1,5 +1,8 @@
 # filerefs-js Changelog
 
+  - v0.0.5 (2023-09-03)
+    - Bugfix: Ignores data urls
+
   - v0.0.4 (2023-09-03)
     - Bugfix: Includes the URL hash if it exists
     - Bugfix: Strictly recognizes missing basePath now
