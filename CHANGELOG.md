@@ -1,5 +1,9 @@
 # filerefs-js Changelog
 
+  - v0.0.6 (2023-09-06)
+    - Maintenance: internal changes to prevent side effects
+    - Maintenance: adds unit tests
+
   - v0.0.5 (2023-09-03)
     - Bugfix: Ignores data urls
 
