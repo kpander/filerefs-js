@@ -22,9 +22,10 @@ module.exports = class Filerefs {
    *   key = original file reference
    *   value = path reference from _getRef()
    */
-  static getFilerefs(html, options = {}) {
+  static getFilerefs(html, srcOptions = {}) {
     if (typeof html !== "string") return false;
 
+    let options = { ...srcOptions };
     options.basePath = options.basePath || false;
     options.tags = options.tags || Filerefs.TAGS;
 
