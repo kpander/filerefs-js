@@ -146,10 +146,16 @@ $ npm run build
 $ npm publish
 ```
 
+## Tests
+
+To run the tests:
+
+```bash
+$ npm run test
+```
+
 
 # TODO
-
-  - Add the Jest test cases (see `test/test.js`)
 
 Yes, we're using regex to parse HTML instead of a parsing engine (like cheerio or jsDOM). Yes, that's brittle and bad. Assume we're using this for our very specific use case and we're not going to encounter things like '>' characters in a data attribute in markup.
 
