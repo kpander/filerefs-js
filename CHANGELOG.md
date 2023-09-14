@@ -1,5 +1,8 @@
 # filerefs-js Changelog
 
+  - v1.0.0 (2023-09-14)
+    - Maintenance: first public release (no new changes from v0.0.6)
+
   - v0.0.6 (2023-09-06)
     - Maintenance: internal changes to prevent side effects
     - Maintenance: adds unit tests
